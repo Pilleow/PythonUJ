@@ -81,8 +81,8 @@ class App:
         self.input_font = pygame.font.Font("Arvo-Bold.ttf", 36)
         self.help_font = pygame.font.Font("Arvo-Bold.ttf", 12)
         self.help_text = self.help_font.render("INSERT (I), DELETE (D), SEARCH (S), ZOOM IN (+), ZOOM OUT (-), "
-                                               "ADD NODES (UP), REMOVE NODES (DOWN), SLOW DOWN (LEFT), "
-                                               "SPEED UP (RIGHT), MOVE (LMB), CHANGE MODE (C)", True, pygame.color.Color(130, 140, 150))
+                                               "ADD NODES (UP), REMOVE NODES (DOWN), SPEED UP (LEFT), "
+                                               "SLOW DOWN (RIGHT), MOVE (LMB), CHANGE MODE (C)", True, pygame.color.Color(130, 140, 150))
 
     def initialize_trees(self):
         self.recenter_view = True
@@ -316,7 +316,7 @@ class App:
     def input_handler(self):
         bst_visible = self.tree_view_mode == ViewMode.BST
         avl_visible = self.tree_view_mode == ViewMode.AVL
-        if not self.input.isnumeric():
+        if not self.input.isnumeric() or len(self.input) == 0:
             return
         if self.input_mode == InputMode.INSERT:
             self.bst_tree.insert(Node(int(self.input)), bst_visible)

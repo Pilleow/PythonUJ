@@ -84,6 +84,8 @@ class BSTTree:
     def delete(self, node: Node, animate: bool = False):
         if animate:
             self.animation_focus(node)
+        if node is None:
+            return
         if node.left is None and node.right is None:
             if node.parent.left is node:
                 node.parent.left = None
