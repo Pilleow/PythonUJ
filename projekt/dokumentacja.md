@@ -28,6 +28,22 @@ Poniżej znajduje się krótki opis każdego pliku w projekcie:
 - Definiuje klasę `Node`, która reprezentuje pojedynczy węzeł drzewa.
 - Każdy węzeł posiada atrybuty takie jak wartość, lewe i prawe dziecko, rodzic oraz głębokość.
 
+### Uwaga: Rysowanie drzewa
+
+Rysowanie drzewa jest realizowane w funkcji `render_tree()` w pliku `main.py`, która działa w pętli głównej aplikacji. Kluczowe kroki to:
+
+1. Obliczenie odstępów i pozycji węzłów
+  - Dla każdego poziomu drzewa (`depth`) obliczana jest liczba węzłów, które muszą być narysowane (`count_nodes_per_depth()`).
+  - Wartości te są używane do określenia szerokości (`x_node_span`), która definiuje maksymalny zakres pozycji węzłów na danym poziomie.
+2. Rekursyjne rysowanie węzłów
+  - Funkcja `calculate_point_recursive()` jest odpowiedzialna za rysowanie drzewa w sposób rekurencyjny:
+    - Funkcja przyjmuje aktualny węzeł, pozycję rodzica, zakresy pozycji (`min_x`, `max_x`), głębokość węzła (`y`) oraz rodzica węzła.
+    - Dla każdego węzła funkcja rekurencyjnie przechodzi do jego lewego i prawego potomka, obliczając ich pozycje w układzie współrzędnych.
+3. Rysowanie węzłów i krawędzi
+  - Jeśli węzeł ma rodzica, rysowane są linie łączące go z rodzicem. Kolor linii zależy od tego, czy węzeł jest lewym, czy prawym dzieckiem.
+  - Węzły są rysowane jako okręgi z wartością w środku. Okręgi mają różne kolory w zależności od tego, czy węzeł jest aktywny, wyróżniony, czy pasywny (np. w trakcie animacji wyszukiwania).
+  - W przypadku trybu AVL przy każdym węźle wyświetlany jest jego czynnik równowagi (balance_factor), który jest obliczany przez `calc_balance_factor()`.
+
 ## Instalacja i Uruchomienie
 
 ### Wymagania
@@ -65,3 +81,9 @@ pip install pygame
  
 ## Autor
 Igor Zamojski, w ramach kursu *Język Python 2024/2025* na piątym semestrze studiów *Informatyka Stosowana* na *Uniwersytecie Jagiellońskim*.
+
+## Źródła
+- [geeksforgeeks.org](https://www.geeksforgeeks.org/)
+- [w3schools.com](https://www.w3schools.com/dsa)
+- [wikipedia.org (AVL Tree)](https://en.wikipedia.org/wiki/AVL_tree)
+- [wikipedia.org (BST Tree)](https://en.wikipedia.org/wiki/Binary_search_tree)
