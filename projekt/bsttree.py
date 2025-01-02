@@ -119,7 +119,10 @@ class BSTTree:
         if v is not None:
             v.parent = u.parent
 
-    def traverse(self, operation: Callable[[Node], Any], order_type: int = OrderType.INORDER, animate: bool = False):
+    def traverse(
+            self, operation: Callable[[Node], Any],
+            order_type: int = OrderType.INORDER, animate: bool = False
+    ):
         if animate:
             self.animation_focus(self.root)
         if self.root is not None:
@@ -138,7 +141,10 @@ class BSTTree:
                 if animate:
                     self.animation_focus(self.root)
 
-    def _rec_traverse(self, node: Node, operation: Callable[[Node], Any], order_type: int = OrderType.INORDER, animate: bool = False):
+    def _rec_traverse(
+            self, node: Node, operation: Callable[[Node], Any],
+            order_type: int = OrderType.INORDER, animate: bool = False
+    ):
         if node is not None:
             if order_type == OrderType.PREORDER:
                 operation(node)

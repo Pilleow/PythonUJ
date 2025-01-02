@@ -80,9 +80,12 @@ class App:
         self.node_font = pygame.font.Font("Arvo-Bold.ttf", 16 * self.node_radius // 20)
         self.input_font = pygame.font.Font("Arvo-Bold.ttf", 36)
         self.help_font = pygame.font.Font("Arvo-Bold.ttf", 12)
-        self.help_text = self.help_font.render("INSERT (I), DELETE (D), SEARCH (S), ZOOM IN (+), ZOOM OUT (-), "
-                                               "ADD NODES (UP), REMOVE NODES (DOWN), SPEED UP (LEFT), "
-                                               "SLOW DOWN (RIGHT), MOVE (LMB), CHANGE MODE (C)", True, pygame.color.Color(130, 140, 150))
+        self.help_text = self.help_font.render(
+            "INSERT (I), DELETE (D), SEARCH (S), ZOOM IN (+), ZOOM OUT (-), "
+            "ADD NODES (UP), REMOVE NODES (DOWN), SPEED UP (LEFT), "
+            "SLOW DOWN (RIGHT), MOVE (LMB), CHANGE MODE (C), QUIT (Q)",
+            True, pygame.color.Color(130, 140, 150)
+        )
 
     def initialize_trees(self):
         self.recenter_view = True
@@ -205,6 +208,9 @@ class App:
                     self.input_mode = InputMode.INFO
                     self.input = "ANIM TIME = " + str(self.bst_tree.anim_time) + " s"
 
+                elif event.key == pygame.K_q:
+                    self.running = False
+
                 else:
                     self.input_mode = InputMode.NONE
 
@@ -267,7 +273,10 @@ class App:
             self.screen.blit(text, (x - text.get_width() // 2, y - text.get_height() // 2))
             if self.tree_view_mode == ViewMode.AVL:
                 bal_text = self.help_font.render(str(self.avl_tree.calc_balance_factor(node)), True, color)
-                self.screen.blit(bal_text, (x - bal_text.get_width() // 2 + self.node_radius, y - text.get_height() // 2 - self.node_radius))
+                self.screen.blit(
+                    bal_text,
+                    (x - bal_text.get_width() // 2 + self.node_radius, y - text.get_height() // 2 - self.node_radius)
+                )
 
         def get_node_color(mpos_dist, node):
             if ((self.tree_view_mode == ViewMode.BST and self.bst_tree.active_node is node) or
@@ -287,9 +296,13 @@ class App:
             self.center_view_scroll()
         self.node_points = []
         if self.tree_view_mode == ViewMode.BST:
-            calculate_point_recursive(self.bst_tree.root, None, None, 0, self.RESOLUTION.x, 100 + self.view_scroll.y, None)
+            calculate_point_recursive(
+                self.bst_tree.root, None, None, 0, self.RESOLUTION.x, 100 + self.view_scroll.y, None
+            )
         if self.tree_view_mode == ViewMode.AVL:
-            calculate_point_recursive(self.avl_tree.root, None, None, 0, self.RESOLUTION.x, 100 + self.view_scroll.y, None)
+            calculate_point_recursive(
+                self.avl_tree.root, None, None, 0, self.RESOLUTION.x, 100 + self.view_scroll.y, None
+            )
 
     def count_nodes_per_depth(self):
         self.bst_node_count_per_depth.clear()
