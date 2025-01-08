@@ -78,12 +78,15 @@ pip install pygame
   - `↑` lub `↓`: Zwiększ lub zmniejsz liczbę węzłów (operacja generuje nowe drzewo).
 - **Szybkość Animacji**:
   - `←` lub `→`: Zmień szybkość animacji.
+  - `Q`: Zakończenie programu.
  
 ## Autor
 Igor Zamojski, w ramach kursu *Język Python 2024/2025* na piątym semestrze studiów *Informatyka Stosowana* na *Uniwersytecie Jagiellońskim*.
 
 ## Źródła
-- [geeksforgeeks.org](https://www.geeksforgeeks.org/)
-- [w3schools.com](https://www.w3schools.com/dsa)
-- [wikipedia.org (AVL Tree)](https://en.wikipedia.org/wiki/AVL_tree)
-- [wikipedia.org (BST Tree)](https://en.wikipedia.org/wiki/Binary_search_tree)
+- [geeksforgeeks.org/introduction-to-avl-tree/](https://www.geeksforgeeks.org/introduction-to-avl-tree/)
+- [geeksforgeeks.org/binary-search-tree-data-structure/](https://www.geeksforgeeks.org/binary-search-tree-data-structure/)
+- [w3schools.com/dsa/dsa_data_binarysearchtrees.php](https://www.w3schools.com/dsa/dsa_data_binarysearchtrees.php)
+- [w3schools.com/dsa/dsa_data_avltrees.php](https://www.w3schools.com/dsa/dsa_data_avltrees.php)
+- [en.wikipedia.org/wiki/AVL_tree](https://en.wikipedia.org/wiki/AVL_tree)
+- [en.wikipedia.org/wiki/Binary_search_tree](https://en.wikipedia.org/wiki/Binary_search_tree)
